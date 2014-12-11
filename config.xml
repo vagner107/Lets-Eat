@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+	xmlns:android   = "http://schemas.android.com/apk/res/android"
+    id        = "com.phonegap.lets"
+	version   = "1.5">
+	id        = "com.phonegap.lets"
+
+<name>Double Let's Eat</name>
+
+<description>
+application Lets Eat.
+</description>
+
+<author href="https://example.com" email="you@example.com">
+Vagner
+</author>
+<icon src="images/logo2.png" />
+
+<gap:splash src="images/logo4.png"/>
+
+	
+<feature name="http://api.phonegap.com/1.0/notification"/>
+<preference name="permissions"                value="none"/>
+
+  
+    <preference name="phonegap-version"           value="3.6.3" />     <!-- all: current version of PhoneGap -->
+    <preference name="orientation"                value="portrait" />  <!-- all: vertical horizoltal tela-->
+    <preference name="fullscreen"                 value="false" />       <!-- all: barra de status no topo da tela-->
+    <preference name="android-installLocation"    value="auto" />           
+
+   ><gap:plugin name="com.phonegap.plugins.pushplugin" version="2.3.1" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+   
+    <access origin="*"/>
+  
+</widget>

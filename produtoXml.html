@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8">
+<title>Lets Eat</title> 
+<style type="text/css">
+#page2 {
+	
+	background-image:url(images/logo-lets-eat-hamburgeria4.png);
+	background-repeat: no-repeat;
+	background-size:100%;
+	
+	
+	
+	
+	/* background: url(images/logo-lets-eat-hamburgeria4.png) center; 
+     background-size: 100% 100%; 
+	 background-repeat: no-repeat;
+	background-position: center center;
+    */
+  
+}
+</style>
+<!--Scripts Para popuo-->
+<script src="scripts/jquery.js" type="text/javascript"></script>
+<script src="scripts/jquery.ui.draggable.js" type="text/javascript"></script>
+<script src="scripts/jquery.alerts.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link href="jquery-mobile/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="jquery-mobile/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+<script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript">
+</script>
+</head> 
+<body>
+
+
+
+<!-- PAGINA DE PRODUTOS -->
+
+<div data-role="page" id="page2">
+<p>&nbsp;</p>
+<div id="nome" ></div>
+<div id="result"></div>
+<p>
+    <div class="ui-body">
+       <div data-role="collapsible" data-theme="a" data-content-theme="e">
+        <h3>Descontos Ativos</h3>
+        <p style="text-align:center"><code id="resultado"></code></p>
+      </div>
+      <div data-role="collapsible" data-theme="a" data-content-theme="e">
+        <h3>Descontos Usados</h3>
+        <p style="text-align:center"><code id="resultado1"></code></p>
+      </div>
+      </div>
+
+</div>
+
+ 
+</body>
+</html> 
+
+<script type="text/javascript">
+	
+
+
+$(document).ready(function(){
+function parse(document){
+
+$(document).find("voucher").each(function(){
+$("#nome").append(
+'<div style="width:40%" id="top" align="center">'+
+'<h3>Olá '+$(this).find('nome').text()+'</h3>'+'Seu Código: '+'<h3>'+$(this).find('codclient').text()+'</h3>'+
+'</p>'+
+'<div>'	
+);
+});
+
+
+
+$(document).find("contato").each(function(){
+
+// IF FAZ A IDENTIFICAÇÃO DE O VOUCHER ESTA VENCIDO E POSTA NO CAMPO CERTO
+// SE FOR 1 É VOUCHER USADO, SE FOR 0 VOUCHER NÃO USADO, SE FOR 3 VOUCHER VENCIDO //e não usado
+if ($(this).find('vvoucher').text() ==1){	
+$("#resultado1").append(
+$(this).find('pproduto').text()+'  '+
+'<h3>Vencimento:'+$(this).find('datav').text()+'  '+'<h3>'+
+'</p>'
+);
+}else if ($(this).find('vvoucher').text() ==0){
+$("#resultado").append(
+$(this).find('pproduto').text()+'  '+
+'<h3>Vencimento:'+$(this).find('datav').text()+'  '+'<h3>'+
+'</p>'
+);	
+}
+
+
+
+});
+
+}
+ 
+$.ajax({
+url: 'contato.xml', 
+dataType: "xml",
+success: parse,
+error: function(){alert("Erro.");}
+});
+});
+
+
+
+</script>
+ 
