@@ -9,16 +9,7 @@
 	background-image:url(images/logo-lets-eat-hamburgeria4.png);
 	background-repeat: no-repeat;
 	background-size:100%;
-	
-	
-	
-	
-	/* background: url(images/logo-lets-eat-hamburgeria4.png) center; 
-     background-size: 100% 100%; 
-	 background-repeat: no-repeat;
-	background-position: center center;
-    */
-  
+
 }
 </style>
 <!--Scripts Para popuo-->
@@ -42,46 +33,42 @@
 
 
 <!-- PAGINA DE PRODUTOS -->
-
 <div data-role="page" id="page2">
-<p>&nbsp;</p>
-<div id="nome" ></div>
-<div id="result"></div>
-<p>
-    <div class="ui-body">
-       <div data-role="collapsible" data-theme="a" data-content-theme="e">
-        <h3>Descontos Ativos</h3>
-        <p style="text-align:center"><code id="resultado"></code></p>
-      </div>
-      <div data-role="collapsible" data-theme="a" data-content-theme="e">
-        <h3>Descontos Usados</h3>
-        <p style="text-align:center"><code id="resultado1"></code></p>
-      </div>
-      </div>
-
+	<p>&nbsp;</p>
+	<div id="nome" ></div>
+	<div id="result"></div>
+	<p>
+	<div class="ui-body">
+		<div data-role="collapsible" data-theme="a" data-content-theme="e">
+			<h3>Descontos Ativos</h3>
+			<p style="text-align:center"><code id="resultado"></code></p>
+		</div>
+		<div data-role="collapsible" data-theme="a" data-content-theme="e">
+			<h3>Descontos Usados</h3>
+			<p style="text-align:center"><code id="resultado1"></code></p>
+		</div>
+	</div>
 </div>
 
- 
+
 </body>
 </html> 
 
 <script type="text/javascript">
 	
-
-
 $(document).ready(function(){
 function parse(document){
 
 $(document).find("voucher").each(function(){
 $("#nome").append(
 '<div style="width:40%" id="top" align="center">'+
-'<h3>Olá '+$(this).find('nome').text()+'</h3>'+'Seu Código: '+'<h3>'+$(this).find('codclient').text()+'</h3>'+
+'<h3 style="margin: 14px">Olá '+$(this).find('nome').text()+'</h3>'+
+'Seu Código: '+
+'<h3 style="margin: 6px">'+$(this).find('codclient').text()+'</h3>'+
 '</p>'+
 '<div>'	
 );
 });
-
-
 
 $(document).find("contato").each(function(){
 
@@ -89,20 +76,13 @@ $(document).find("contato").each(function(){
 // SE FOR 1 É VOUCHER USADO, SE FOR 0 VOUCHER NÃO USADO, SE FOR 3 VOUCHER VENCIDO //e não usado
 if ($(this).find('vvoucher').text() ==1){	
 $("#resultado1").append(
-$(this).find('pproduto').text()+'  '+
-'<h3>Vencimento:'+$(this).find('datav').text()+'  '+'<h3>'+
-'</p>'
+'<strong>'+ $(this).find('pproduto').text()+ '</strong>'+'</p>'
 );
 }else if ($(this).find('vvoucher').text() ==0){
 $("#resultado").append(
-$(this).find('pproduto').text()+'  '+
-'<h3>Vencimento:'+$(this).find('datav').text()+'  '+'<h3>'+
-'</p>'
+'<strong>'+ $(this).find('pproduto').text()+ '</strong>'+'</p>'
 );	
 }
-
-
-
 });
 
 }
@@ -114,8 +94,5 @@ success: parse,
 error: function(){alert("Erro.");}
 });
 });
-
-
-
 </script>
  
